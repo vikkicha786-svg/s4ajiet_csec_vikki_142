@@ -1,0 +1,32 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = sc.nextInt();
+        
+        int originalNum = num;
+        int temp = num;
+        int sum = 0;
+        int digits = 0;
+
+        
+        String s = Integer.toString(num);
+        digits = s.length();
+
+        
+        while (temp > 0) {
+            int d = temp % 10;
+            sum += Math.pow(d, digits);
+            temp = temp / 10;
+        }
+
+        
+        if (sum == originalNum) {
+            System.out.println(originalNum + " is an Armstrong number.");
+        } else {
+            System.out.println(originalNum + " is NOT an Armstrong number.");
+        }
+    }
+}
