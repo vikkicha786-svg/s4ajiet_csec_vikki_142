@@ -1,0 +1,24 @@
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int num = sc.nextInt();
+
+        int lar = 0;
+
+        while (num > 0) {
+
+            int d = num % 10;
+
+            if (d > lar) {
+                lar = d;
+            }
+
+            num = num / 10;
+        }
+
+        System.out.println("Largest digit is: " + lar);
+    }
+}
