@@ -1,0 +1,32 @@
+class Student {
+    int id;
+    String n;
+    static int count;
+    
+    public static void incrementcount(){
+      count++;
+    }
+    public Student(String n) {
+        incrementcount();
+        this.id = count;
+        this.n = n;
+    }
+    public void display(){
+      System.out.println("Name:"+ n +"\nID:"+id);
+    }
+    public static int gettotalstudents(){
+      return(count);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student("Alice");
+        Student s2 = new Student("john");
+        Student s3 = new Student("gerard");
+        s1.display();
+        s2.display();
+        s3.display();
+        System.out.println(Student.gettotalstudents());
+    }
+}
