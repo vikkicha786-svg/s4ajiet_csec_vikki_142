@@ -19,12 +19,22 @@ public class Main {
         return map1;
     }
 
+    
+    public static boolean isAnagram(String s, String t) {
+
+        HashMap<Character, Integer> map1 = counter(s);
+        HashMap<Character, Integer> map2 = counter(t);
+
+        return map1.equals(map2);
+    }
+
     public static void main(String[] args) {
 
         String s = "anagram";
+        String t = "nagaram";
 
-        HashMap<Character, Integer> map = counter(s);
+        boolean result = isAnagram(s, t);
 
-        System.out.println(map);
+        System.out.println(result);
     }
 }
