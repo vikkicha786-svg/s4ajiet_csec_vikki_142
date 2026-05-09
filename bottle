@@ -1,0 +1,124 @@
+class Bottle {
+
+    String brand;
+    String colour;
+    int volume;
+
+    int currentVolume = 0;
+
+    boolean isEmpty;
+    boolean isFull;
+    boolean isOpen;
+    boolean isClosed;
+
+    
+    Bottle(String brand, String colour, int volume) {
+        this.brand = brand;
+        this.colour = colour;
+        this.volume = volume;
+
+        isEmpty = true;
+        isFull = false;
+        isOpen = false;
+        isClosed = true;
+    }
+
+    
+    public void openCap() {
+        System.out.println("Opening cap...");
+        this.isOpen = true;
+        this.isClosed = false;
+    }
+
+    
+    public void closeCap() {
+        System.out.println("Closing cap...");
+        this.isOpen = false;
+        this.isClosed = true;
+    }
+
+   
+    public void drink(int consumed) {
+
+        if (!isOpen) {
+            System.out.println("Cannot drink. Bottle is closed.");
+            return;
+        }
+
+        if (consumed > currentVolume) {
+            System.out.println("Not enough water in bottle.");
+            return;
+        }
+
+        System.out.println("Drinking " + consumed + " ml of water");
+
+        this.currentVolume -= consumed;
+
+        if (this.currentVolume == 0) {
+            this.isEmpty = true;
+        }
+
+        this.isFull = false;
+    }
+
+    
+    public void fillWater(int water) {
+
+        if (!isOpen) {
+            System.out.println("Cannot fill water. Bottle is closed.");
+            return;
+        }
+
+        if (this.currentVolume + water > this.volume) {
+            System.out.println("Bottle overflow!");
+            return;
+        }
+
+        System.out.println("Filling " + water + " ml of water");
+
+        this.currentVolume += water;
+
+        if (this.currentVolume > 0) {
+            this.isEmpty = false;
+        }
+
+        if (this.currentVolume == this.volume) {
+            this.isFull = true;
+        }
+    }
+
+    
+    public void display() {
+
+        System.out.println("\n----- Bottle Details -----");
+        System.out.println("Brand          : " + brand);
+        System.out.println("Colour         : " + colour);
+        System.out.println("Bottle Capacity: " + volume + " ml");
+        System.out.println("Current Volume : " + currentVolume + " ml");
+
+        System.out.println("Is Empty : " + isEmpty);
+        System.out.println("Is Full  : " + isFull);
+        System.out.println("Is Open  : " + isOpen);
+        System.out.println("Is Closed: " + isClosed);
+    }
+
+   
+    public static void main(String[] args) {
+
+        Bottle b1 = new Bottle("Bisleri", "Blue", 1000);
+
+        b1.display();
+
+        b1.openCap();
+
+        b1.fillWater(500);
+
+        b1.display();
+
+        b1.drink(200);
+
+        b1.display();
+
+        b1.closeCap();
+    }
+}
