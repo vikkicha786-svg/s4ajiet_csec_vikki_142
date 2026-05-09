@@ -1,0 +1,30 @@
+import java.util.HashMap;
+
+public class Main {
+
+    
+    public static HashMap<Character, Integer> counter(String a) {
+
+        HashMap<Character, Integer> map1 = new HashMap<>();
+
+        for (char ch : a.toCharArray()) {
+
+            if (map1.containsKey(ch)) {
+                map1.put(ch, map1.get(ch) + 1);
+            } else {
+                map1.put(ch, 1);
+            }
+        }
+
+        return map1;
+    }
+
+    public static void main(String[] args) {
+
+        String s = "anagram";
+
+        HashMap<Character, Integer> map = counter(s);
+
+        System.out.println(map);
+    }
+}
